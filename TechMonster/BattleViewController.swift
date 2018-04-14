@@ -71,6 +71,7 @@ class BattleViewController: UIViewController {
         TechDraUtil.stopBGM()
         //こうげきボタンを隠す
         attackButton.isHidden = true
+        enemyAttackTime.invalidate()
         //アラートを表示
         let finishedMessage: String
         if winPlayer == true {
@@ -97,7 +98,6 @@ class BattleViewController: UIViewController {
         
         player.currentHP = player.currentHP - player.attackPower
         playerHPBar.setProgress(player.currentHP / player.maxHP, animated: true)
-        
         if player.currentHP < 0 {
             TechDraUtil.animateVanish(playerImageView)
             finishBattle(winPlayer: false)
